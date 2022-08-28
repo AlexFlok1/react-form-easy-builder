@@ -1,0 +1,15 @@
+{
+  "name": "react-form-easy-builder",
+  "version": "0.0.1",
+  "description": "This is light form builder which will give you (developer) an ability to add forms pretty quick and manage them",
+  "main": "index.js",
+  "module": "index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Flok",
+  "license": "ISC"
+}
