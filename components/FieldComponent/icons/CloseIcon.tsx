@@ -1,4 +1,4 @@
-import Icon from "../../../types/icon";
+import Icon from "lib/types/icon";
 import { FC } from "react";
 
 const CloseIncon: FC<Icon> = (props) => {

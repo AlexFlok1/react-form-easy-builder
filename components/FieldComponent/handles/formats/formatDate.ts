@@ -1,4 +1,4 @@
-const formatDate = (date: any) => {
+const formatDate = (format: string, date: any) => {
   const current = new Date();
   switch (date.toLowerCase()) {
     case "today" || "current" || "now":

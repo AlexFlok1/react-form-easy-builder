@@ -16,6 +16,7 @@ interface propsInterface {
 const DatePickerComponent: FC<propsInterface> = (props: propsInterface) => {
   const { date, handleChange } = props;
   const [setup, setSetup] = useState<setupInterface | null>(null);
+  const [touched, setTouched] = useState<boolean>(false);
 
   const monthBoxComponent = (month: number) => {
     const monthName = new Date(0, month).toLocaleString("default", {
@@ -24,7 +25,10 @@ const DatePickerComponent: FC<propsInterface> = (props: propsInterface) => {
     console.log(month === setup!.month);
     return (
       <MonthBox
-        onClick={() => actionChange(month, "month")}
+        onClick={() => {
+          actionChange(month, "month");
+          setTouched(true);
+        }}
         key={`month-${month}`}
         active={month === setup!.month}
       >
@@ -40,7 +44,10 @@ const DatePickerComponent: FC<propsInterface> = (props: propsInterface) => {
     return (
       <>
         <DayBox
-          onClick={() => actionChange(val, "day")}
+          onClick={() => {
+            actionChange(val, "day");
+            setTouched(true);
+          }}
           dayName={dayName}
           active={val === setup!.day}
           key={`day-${val}`}
@@ -59,15 +66,15 @@ const DatePickerComponent: FC<propsInterface> = (props: propsInterface) => {
   };
 
   useEffect(() => {
-    if (setup)
+    if (setup && touched)
       handleChange(
         new Date(setup!.year, setup!.month, setup!.day).toLocaleDateString(),
       );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setup]);
+  }, [handleChange, setup, touched]);
 
   useEffect(() => {
     const current = date ? new Date(date) : new Date();
+    console.log(current);
     setSetup({
       month: current.getMonth(),
       day: current.getDate(),
@@ -110,7 +117,10 @@ const DatePickerComponent: FC<propsInterface> = (props: propsInterface) => {
         {setup && (
           <YearBox>
             <select
-              onChange={(e) => actionChange(e.currentTarget.value, "year")}
+              onChange={(e) => {
+                actionChange(e.currentTarget.value, "year");
+                setTouched(true);
+              }}
               style={{ width: "100%" }}
               defaultValue={setup!.year}
             >

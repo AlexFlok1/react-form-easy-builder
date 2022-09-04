@@ -1,5 +1,5 @@
-import selectItem from "../../../types/selectItem";
-import { FC } from "react";
+import selectItem from "lib/types/selectItem";
+import { FC, useEffect, useState } from "react";
 import { SelectorItem, SelectorWrapper } from "./styles";
 
 export interface SelectionComponetInterface {
@@ -15,7 +15,7 @@ const SelectionComponet: FC<SelectionComponetInterface> = (
   return (
     <>
       <SelectorWrapper>
-        {items.map((el) =>
+        {items.map((el, indx) =>
           el instanceof Object ? (
             <SelectorItem
               onClick={() => {

@@ -3,7 +3,7 @@ import { FC } from "react";
 import { Button } from "./styles";
 
 const ButtonComponent: FC<ButtonInterface> = (props) => {
-  const { text, action } = props;
+  const { text, type, action } = props;
   return (
     <>
       <Button

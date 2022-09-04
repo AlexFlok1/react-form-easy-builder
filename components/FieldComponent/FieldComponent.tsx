@@ -49,7 +49,7 @@ const FieldComponent: FC<FieldComponentIterface> = (props) => {
       setValue((prev: string) =>
         prev.length <= value.length ? formatPhone(value) : value,
       );
-    else if (input.type === "date") setValue(formatDate(value));
+    else if (input.type === "date") setValue(formatDate("", value));
     else {
       setValue((prev: string) => (prev !== value ? value : prev));
     }
@@ -78,7 +78,8 @@ const FieldComponent: FC<FieldComponentIterface> = (props) => {
   };
 
   const handleReset = () => {
-    setValue("");
+    console.log(value);
+    setValue((prev) => "");
   };
 
   const handleRules = (rules: Rule[], value: string) => {
@@ -128,7 +129,9 @@ const FieldComponent: FC<FieldComponentIterface> = (props) => {
   return (
     <>
       <ComponentWrapper
+        type={label.type}
         padding={label.type === "floating" ? "10px 4px 4px 4px" : ""}
+        errorStyle={!!error}
         ref={componenInputRef}
       >
         {label && label.type !== "floating" && (
