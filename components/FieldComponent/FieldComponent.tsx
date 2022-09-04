@@ -39,7 +39,6 @@ const FieldComponent: FC<FieldComponentIterface> = (props) => {
   const { CloseIncon } = Icons;
 
   const handleChange = (value: string, key?: string) => {
-    console.log({ value, key });
     setError(null);
     setTouched((prev) => (prev ? prev : true));
 
@@ -78,7 +77,6 @@ const FieldComponent: FC<FieldComponentIterface> = (props) => {
   };
 
   const handleReset = () => {
-    console.log(value);
     setValue((prev) => "");
   };
 
@@ -116,8 +114,6 @@ const FieldComponent: FC<FieldComponentIterface> = (props) => {
     if (componenInputRef?.current)
       document.addEventListener("click", handleClickOutside);
     if (actions?.handleChange) actions?.handleChange(name, value);
-
-    console.log(value);
 
     return () => {
       document.removeEventListener("click", handleClickOutside);

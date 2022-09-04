@@ -17,13 +17,11 @@ const DatePickerComponent: FC<propsInterface> = (props: propsInterface) => {
   const { date, handleChange } = props;
   const [setup, setSetup] = useState<setupInterface | null>(null);
   const [touched, setTouched] = useState<boolean>(false);
-  const [test, setTest] = useState<boolean>(false);
 
   const monthBoxComponent = (month: number) => {
     const monthName = new Date(0, month).toLocaleString("default", {
       month: "short",
     });
-    console.log(month === setup!.month);
     return (
       <MonthBox
         onClick={() => {
@@ -75,7 +73,6 @@ const DatePickerComponent: FC<propsInterface> = (props: propsInterface) => {
 
   useEffect(() => {
     const current = date ? new Date(date) : new Date();
-    console.log(current);
     setSetup({
       month: current.getMonth(),
       day: current.getDate(),

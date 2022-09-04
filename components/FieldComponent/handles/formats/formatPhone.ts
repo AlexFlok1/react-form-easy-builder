@@ -10,8 +10,6 @@ const formatPhone = (value: string) => {
   if (value.length > 10 && value[12] !== "-")
     newValue = `${value.slice(0, 11)} - ${value.slice(11, value.length)}`;
 
-  console.log(value[12]);
-
   return newValue;
 };
 

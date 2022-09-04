@@ -13,7 +13,6 @@ const Form: FC<FormComponentInterface> = (props: FormComponentInterface) => {
   };
 
   const handleSubmitForm = () => {
-    console.log(values);
     handleSubmit && handleSubmit(values);
   };
 
