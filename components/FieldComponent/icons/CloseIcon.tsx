@@ -1,8 +1,7 @@
 import Icon from "lib/types/icon";
 import { FC } from "react";
 
-const CloseIncon: FC<Icon> = (props) => {
-  const { width, height, fill } = props;
+const CloseIncon: FC<Icon> = ({ width = 15, height = 20, fill = "black" }) => {
   return (
     <svg
       fill={fill}

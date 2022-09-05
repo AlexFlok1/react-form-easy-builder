@@ -83,7 +83,6 @@ const DatePickerComponent: FC<propsInterface> = (props: propsInterface) => {
         0,
       ).getDate(),
     });
-    // console.log(setup);
   }, [date]);
 
   return (

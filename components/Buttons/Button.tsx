@@ -11,6 +11,7 @@ const ButtonComponent: FC<ButtonInterface> = (props) => {
         onClick={() => {
           action();
         }}
+        buttonType={type}
       >
         {text}
       </Button>

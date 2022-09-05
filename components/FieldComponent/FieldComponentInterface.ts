@@ -13,14 +13,22 @@ export default interface FieldComponentIterface {
   resetIcon?: {
     background: string;
     borderRadius: number;
+    customStyle?: Object;
   };
   prefix?: {
     icon: string | Icon;
     background?: string;
+    customStyle?: Object;
+  };
+  suffix?: {
+    icon: string | Icon;
+    background?: string;
+    customStyle?: Object;
   };
   form?: any;
   name?: string;
   actions?: {
     handleChange?: any;
+    handleReset?: boolean;
   };
 }

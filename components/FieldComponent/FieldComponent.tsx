@@ -3,9 +3,9 @@ import DatePickerComponent from "./datepicker";
 import FieldComponentIterface from "./FieldComponentInterface";
 
 //handlers
-import formatPhone from "./handles/formats/formatPhone";
-import formatDate from "./handles/formats/formatDate";
-import ErrorHandlerComponent from "./handles/handleError";
+import formatPhone from "./handlers/formats/formatPhone";
+import formatDate from "./handlers/formats/formatDate";
+import ErrorHandlerComponent from "./handlers/handleError";
 
 import { Icons } from "./icons";
 import {
@@ -110,10 +110,14 @@ const FieldComponent: FC<FieldComponentIterface> = (props) => {
   };
 
   useEffect(() => {
+    if (actions?.handleReset) handleReset();
+  }, [actions]);
+
+  useEffect(() => {
     if (input.type) handleType(input.type);
     if (componenInputRef?.current)
       document.addEventListener("click", handleClickOutside);
-    if (actions?.handleChange) actions?.handleChange(name, value);
+    if (actions?.handleChange) actions.handleChange(name, value);
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
